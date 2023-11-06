@@ -39,6 +39,7 @@ async function run() {
 
     const newsCollection = client.db("Blog").collection("News");
     const BookmarkCollection = client.db("Blog").collection("Bookmark");
+    const userCollection = client.db("Blog").collection("User");
        
     
     app.get('/news', async(req, res) => {
@@ -113,6 +114,12 @@ async function run() {
       const result = await BookmarkCollection.deleteOne(query);
       res.send(result);
     }) 
+
+    // app.get('/user', async(req, res) => {
+    //   const cursor = userCollection.find();
+    //   const result = await cursor.toArray();
+    //   res.send(result);
+    // })
 
      await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!✅");
